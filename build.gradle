@@ -34,3 +34,19 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+bootRun {
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+}
+
+bootBuildImage {
+	imageName = "gcr.io/kubegcp-256806/menu-api:${project.version}"
+	environment = [
+		// "BP_JVM_VERSION" : "13.0.1",
+		"BPL_JVM_HEAD_ROOM" : "2",
+		"BPL_JVM_LOADED_CLASS_COUNT" : "35",
+		"BPL_JVM_THREAD_COUNT" : "10"
+	]
+}
