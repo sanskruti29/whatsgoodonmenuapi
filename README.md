@@ -1,5 +1,5 @@
 # whatsgoodonmenuapi
-API for whatsgoodonmenu.com
+API for https://whatsgoodonmenu.com
 
 # Gradle Build (Entry point for the project)
 ```
