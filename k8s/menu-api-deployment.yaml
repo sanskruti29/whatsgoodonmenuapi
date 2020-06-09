@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: menu-api-app
-        image: gcr.io/kubegcp-256806/menu-api:0.0.1-SNAPSHOT
+        image: gcr.io/kubegcp-256806/menu-api:0.0.3-SNAPSHOT
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

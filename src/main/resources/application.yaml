@@ -1,0 +1,9 @@
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 2
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/MenuApi

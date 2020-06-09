@@ -20,6 +20,8 @@ curl localhost:8080/actuator/health
 ./gradlew bootRun -Pargs=--logging.level.org.springframework=DEBUG
 ```
 
+./gradlew bootRun -Pargs=--spring.profiles.active=prod
+
 # Kubernetes:
 ```
 kubectl apply -f k8s/menu-api-whatsgoodonmenu-cert.yaml
@@ -33,6 +35,11 @@ kubectl logs menu-api-app-65474bf5c-6wf9w
 After making any changes, choose version in build.gradle, update docker push command and update deployment yaml. Execute to build the image and push it:
 ```
 ./gradlew bootBuildImage
-docker push gcr.io/kubegcp-256806/menu-api:0.0.1-SNAPSHOT
+docker push gcr.io/kubegcp-256806/menu-api:0.0.3-SNAPSHOT
 kubectl apply -f k8s/menu-api-deployment.yaml
+```
+
+# Start MongoDB on local:
+```
+sudo mongod --config /usr/local/etc/mongod.conf
 ```
