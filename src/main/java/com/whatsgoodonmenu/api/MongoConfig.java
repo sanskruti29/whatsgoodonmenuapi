@@ -1,11 +1,18 @@
 package com.whatsgoodonmenu.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings.Builder;
+import com.whatsgoodonmenu.api.database.ZonedDateTimeReadConverter;
+import com.whatsgoodonmenu.api.database.ZonedDateTimeWriteConverter;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 
 @Configuration
 public class MongoConfig extends AbstractMongoClientConfiguration{
@@ -24,5 +31,13 @@ public class MongoConfig extends AbstractMongoClientConfiguration{
         .applyToClusterSettings(settings->{
             settings.applyConnectionString(new ConnectionString(connectionString));
         });
+    }
+    
+    @Override
+    public MongoCustomConversions customConversions() {
+        List<Converter<?,?>> converters = new ArrayList<>();
+        converters.add(new ZonedDateTimeReadConverter());
+        converters.add(new ZonedDateTimeWriteConverter());
+        return new MongoCustomConversions(converters);
     }
 }

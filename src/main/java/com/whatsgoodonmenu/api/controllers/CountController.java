@@ -16,23 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class CountController {
 
     @Autowired VisitorService visitorService;
-
     @GetMapping("/count")
     @CrossOrigin(origins = "*")
     public int count(){
-        return 10;
+        return visitorService.getTotalVisits();
     }
 
     @GetMapping("/visit")
     @CrossOrigin(origins = "*")
     public Visitor visit(HttpServletRequest request){
-       Visitor visitor = visitorService.visit(request);
+        Visitor visitor = visitorService.visit(request);
         return visitor;
     }
 
     @GetMapping("/unique")
     @CrossOrigin(origins = "*")
     public int unique(){
-        return 4;
+        return visitorService.getUniqueVisitors();
     }
 }
