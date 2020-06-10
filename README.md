@@ -35,11 +35,28 @@ kubectl logs menu-api-app-65474bf5c-6wf9w
 After making any changes, choose version in build.gradle, update docker push command and update deployment yaml. Execute to build the image and push it:
 ```
 ./gradlew bootBuildImage
-docker push gcr.io/kubegcp-256806/menu-api:0.0.3-SNAPSHOT
+docker push gcr.io/kubegcp-256806/menu-api:0.0.4-SNAPSHOT
 kubectl apply -f k8s/menu-api-deployment.yaml
 ```
 
 # Start MongoDB on local:
 ```
 sudo mongod --config /usr/local/etc/mongod.conf
+```
+
+# For local production:
+
+Step 1: start mongoDB
+```
+sudo mongod --config /usr/local/etc/mongod.conf
+```
+
+Step 2: start backend application
+```
+./gradlew bootRun
+```
+
+Step 3: start frontend application
+```
+npm install
 ```
