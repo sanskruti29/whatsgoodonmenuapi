@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: menu-api-app
-        image: gcr.io/kubegcp-256806/menu-api:0.0.4-SNAPSHOT
+        image: gcr.io/kubegcp-256806/menu-api:0.0.5-SNAPSHOT
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -39,14 +39,13 @@ spec:
           value: "10"  
         - name: JAVA_OPTS
           value: >-
-                -XX:ReservedCodeCacheSize=60M
+                -XX:ReservedCodeCacheSize=40M
                 -XX:MaxMetaspaceSize=60M
                 -Xlog:gc
-                -Xms30m
+                -Xms34m
                 -Xmx40m
                 -Xss256k
-                -XX:MaxRAM=160M
-                -XX:+PrintFlagsFinal
+                -XX:MaxRAM=150M
         livenessProbe:
           httpGet:
             port: 8080

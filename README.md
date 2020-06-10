@@ -34,9 +34,9 @@ kubectl logs menu-api-app-65474bf5c-6wf9w
 # Spring Boot build image:
 After making any changes, choose version in build.gradle, update docker push command and update deployment yaml. Execute to build the image and push it:
 ```
-./gradlew bootBuildImage
-docker push gcr.io/kubegcp-256806/menu-api:0.0.4-SNAPSHOT
-kubectl apply -f k8s/menu-api-deployment.yaml
+./gradlew bootBuildImage  
+docker push gcr.io/kubegcp-256806/menu-api:0.0.5-SNAPSHOT  
+kubectl apply -f k8s/menu-api-deployment.yaml  
 ```
 
 # Start MongoDB on local:
