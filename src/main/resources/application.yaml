@@ -7,3 +7,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/MenuApi
+management:
+  health:
+    probes:
+      enabled: true

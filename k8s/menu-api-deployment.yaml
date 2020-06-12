@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: menu-api-app
-        image: gcr.io/kubegcp-256806/menu-api:0.0.6-SNAPSHOT
+        image: gcr.io/kubegcp-256806/menu-api:0.0.7-SNAPSHOT
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -42,19 +42,19 @@ spec:
                 -XX:ReservedCodeCacheSize=40M
                 -XX:MaxMetaspaceSize=60M
                 -Xlog:gc
-                -Xms34m
+                -Xms36m
                 -Xmx40m
                 -Xss256k
                 -XX:MaxRAM=150M
         livenessProbe:
           httpGet:
             port: 8080
-            path: /actuator/info
-          initialDelaySeconds: 50
+            path: /actuator/health/liveness
+          initialDelaySeconds: 60
           periodSeconds: 10
         readinessProbe:
           httpGet:
             port: 8080
-            path: /actuator/health
-          initialDelaySeconds: 60
+            path: /actuator/health/readiness
+          initialDelaySeconds: 70
           periodSeconds: 10
