@@ -16,8 +16,7 @@ public class UserController {
 
     @PostMapping("/users")
     @CrossOrigin(origins = "*")
-    public User saveToDatabase(@RequestBody User user){
+    public void saveToDatabase(@RequestBody User user){
         User createdAccount = usersService.createAccount(user);
-        return createdAccount;
-    }
+    } 
 }
