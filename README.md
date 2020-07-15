@@ -35,7 +35,7 @@ kubectl logs menu-api-app-65474bf5c-6wf9w
 After making any changes, choose version in build.gradle, update docker push command and update deployment yaml. Execute to build the image and push it:
 ```
 ./gradlew bootBuildImage  
-docker push gcr.io/kubegcp-256806/menu-api:0.0.7-SNAPSHOT  
+docker push gcr.io/kubegcp-256806/menu-api:0.0.8-SNAPSHOT  
 kubectl apply -f k8s/menu-api-deployment.yaml  
 ```
 
@@ -59,4 +59,26 @@ Step 2: start backend application
 Step 3: start frontend application
 ```
 npm install
+```
+
+# Check Database:
+
+```
+mongo
+```
+
+```
+show databases
+```
+
+```
+use MenuApi
+```
+
+```
+show collections [user,visitor]
+```
+
+```
+db.[collections].find()
 ```

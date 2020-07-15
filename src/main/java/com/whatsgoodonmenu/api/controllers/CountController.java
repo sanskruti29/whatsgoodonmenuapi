@@ -1,11 +1,9 @@
 package com.whatsgoodonmenu.api.controllers;
 
-import java.net.http.HttpRequest;
-
 import javax.servlet.http.HttpServletRequest;
 
 import com.whatsgoodonmenu.api.data.Visitor;
-import com.whatsgoodonmenu.api.services.VisitorService;
+import com.whatsgoodonmenu.api.services.visitor.VisitorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CountController {
 
     @Autowired VisitorService visitorService;
+    
     @GetMapping("/count")
     @CrossOrigin(origins = "*")
     public int count(){

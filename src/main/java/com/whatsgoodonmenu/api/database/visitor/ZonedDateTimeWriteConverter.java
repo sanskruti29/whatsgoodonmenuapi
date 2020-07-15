@@ -1,4 +1,4 @@
-package com.whatsgoodonmenu.api.database;
+package com.whatsgoodonmenu.api.database.visitor;
 
 import java.time.ZonedDateTime;
 import java.util.Date;

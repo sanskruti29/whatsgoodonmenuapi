@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings.Builder;
-import com.whatsgoodonmenu.api.database.ZonedDateTimeReadConverter;
-import com.whatsgoodonmenu.api.database.ZonedDateTimeWriteConverter;
+import com.whatsgoodonmenu.api.database.visitor.ZonedDateTimeReadConverter;
+import com.whatsgoodonmenu.api.database.visitor.ZonedDateTimeWriteConverter;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

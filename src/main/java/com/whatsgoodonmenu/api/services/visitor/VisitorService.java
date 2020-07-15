@@ -1,6 +1,5 @@
-package com.whatsgoodonmenu.api.services;
+package com.whatsgoodonmenu.api.services.visitor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -9,8 +8,8 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 
 import com.whatsgoodonmenu.api.data.Visitor;
-import com.whatsgoodonmenu.api.database.VisitorRepository;
-import com.whatsgoodonmenu.api.database.VisitorTemplate;
+import com.whatsgoodonmenu.api.database.visitor.VisitorRepository;
+import com.whatsgoodonmenu.api.database.visitor.VisitorTemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,10 +21,12 @@ import ua_parser.Parser;
 @Log4j2
 @Component
 public class VisitorService {
+	
 	private static final String UNKNOWN = "UNKNOWN";
 	@Autowired Parser parser;
 	@Autowired VisitorRepository visitorRepository;
 	@Autowired VisitorTemplate visitorTemplate;
+
 	public Visitor visit(HttpServletRequest request) {
 		String ip = extractIp(request);
 		Visitor visitor = new Visitor();
