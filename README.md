@@ -44,7 +44,7 @@ After making any changes, choose version in build.gradle, update docker push com
 
 ```
 ./gradlew bootBuildImage  
-docker push gcr.io/kubegcp-256806/menu-api:0.0.9-SNAPSHOT  
+docker push gcr.io/kubegcp-256806/menu-api:0.0.10-SNAPSHOT  
 kubectl apply -f k8s/menu-api-deployment.yaml  
 watch 'kubectl get pods & kubectl top pods'
 ```
