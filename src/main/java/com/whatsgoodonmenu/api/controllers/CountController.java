@@ -17,7 +17,7 @@ public class CountController {
     
     @GetMapping("/count")
     @CrossOrigin(origins = "*")
-    public int count(){
+    public int count() {
         return visitorService.getTotalVisits();
     }
 

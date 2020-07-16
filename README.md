@@ -95,3 +95,15 @@ show collections [user,visitor]
 ```
 db.[collections].find()
 ```
+
+# DB access: 
+
+```
+kubectl exec -it mongo-0 -c mongo bash
+mongo
+show databases
+use MenuApi
+show collections
+db.visitor.find()
+db.visitor.remove({ip: "73.70.114.196"})
+```
