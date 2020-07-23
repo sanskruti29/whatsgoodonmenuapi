@@ -2,103 +2,104 @@
 
 API for <https://whatsgoodonmenu.com>
 
-# Gradle Build (Entry point for the project)
+## Gradle Build (Entry point for the project)
 
-```
+```SpringBoot
 ./gradlew build
 ```
 
-# Run the application
+## Run the application
 
-```
+```SpringBoot
 ./gradlew bootRun
 ```
 
-# Acutator provided endpoints
+## Acutator provided endpoints
 
-```
+```bash
 curl localhost:8080/actuator/health
 ```
 
-# Run with debug messages for spring framework
+## Run with debug messages for spring framework
 
-```
+```SpringBoot
 ./gradlew bootRun -Pargs=--logging.level.org.springframework=DEBUG
 ```
 
 ./gradlew bootRun -Pargs=--spring.profiles.active=prod
 
-# Kubernetes:
+## Kubernetes
 
-```
+```Kubernetes
 kubectl apply -f k8s/menu-api-whatsgoodonmenu-cert.yaml
 kubectl apply -f k8s/menu-api-backend-service.yaml
 kubectl describe managedcertificate whatsgoodonmenuapimanagedcert
 kubectl get pods
-kubectl logs menu-api-app-65474bf5c-6wf9w 
+kubectl logs menu-api-app-65474bf5c-6wf9w
 ```
 
-# Spring Boot build image:
+## Spring Boot build image
 
 After making any changes, choose version in build.gradle, update docker push command and update deployment yaml. Execute to build the image and push it:
 
-```
+```SpringBoot/bash
 ./gradlew bootBuildImage  
-docker push gcr.io/kubegcp-256806/menu-api:0.0.10-SNAPSHOT  
+docker push gcr.io/kubegcp-256806/menu-api:0.0.11-SNAPSHOT  
 kubectl apply -f k8s/menu-api-deployment.yaml  
 watch 'kubectl get pods & kubectl top pods'
 ```
 
-# Start MongoDB on local:
+## Start MongoDB on local
 
-```
+```MongoDB/bash
 sudo mongod --config /usr/local/etc/mongod.conf
 ```
 
-# For local production:
+## For local production
 
 Step 1: start mongoDB
-```
+
+```MongoDB/bash
 sudo mongod --config /usr/local/etc/mongod.conf
 ```
 
 Step 2: start backend application
 
-```
+```SpringBoot/bash
 ./gradlew bootRun
 ```
 
 Step 3: start frontend application
 
-```
+```Javascript/bash
 npm install
 ```
 
-# Check Database:
+## Check Database
 
-```
+```MongoDB
 mongo
 ```
 
-```
+```MongoDB
 show databases
 ```
 
-```
+```MongoDB
 use MenuApi
 ```
 
-```
+```MongoDB
 show collections [user,visitor]
 ```
 
-```
+```MongoDB
 db.[collections].find()
 ```
 
-# DB access: 
+## DB access
 
-```
+```MongoDB
 kubectl exec -it mongo-0 -c mongo bash
 mongo
 show databases

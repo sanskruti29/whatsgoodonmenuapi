@@ -20,6 +20,7 @@ public class LoginController {
     @CrossOrigin(origins = "*")
     public void saveToDatabase(@RequestBody Login login){
         log.info("processing");
-        Login loggedIn = loginService.userLogin(login);
+
+        // Login loggedIn = loginService.userLogin(login);
     }
 }

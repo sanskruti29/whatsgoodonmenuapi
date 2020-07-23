@@ -15,11 +15,17 @@ public class UsersService {
     @Autowired UserRepository userRepository;
 
     public User createAccount(User user) {
-        String firstName = user.getFirstName();
-        String lastName = user.getLastName();
-
-        User returnedUser = userRepository.save(user);
-        log.info("Creating account for:  " + firstName + " " + lastName);
+        // String firstName = user.getFirstName();
+        // String lastName = user.getLastName();
+        String email = user.getEmail();
+        User returnedUser = null;
+        if(!userRepository.existsById(email)){
+            returnedUser = userRepository.save(user);
+            log.info("Saving in database");
+        } else {
+            log.info("This email id is already taken!");
+        }
+        // log.info("Creating account for:  " + firstName + " " + lastName);
 		return returnedUser;
 	}
 }
