@@ -33,6 +33,7 @@ curl localhost:8080/actuator/health
 ```Kubernetes
 kubectl apply -f k8s/menu-api-whatsgoodonmenu-cert.yaml
 kubectl apply -f k8s/menu-api-backend-service.yaml
+kubectl describe service menu-api-backend
 kubectl describe managedcertificate whatsgoodonmenuapimanagedcert
 kubectl get pods
 kubectl logs menu-api-app-65474bf5c-6wf9w
@@ -44,8 +45,10 @@ After making any changes, choose version in build.gradle, update docker push com
 
 ```SpringBoot/bash
 ./gradlew bootBuildImage  
-docker push gcr.io/kubegcp-256806/menu-api:0.0.11-SNAPSHOT  
+docker push gcr.io/all-projects-292200/menu-api:0.0.13-SNAPSHOT  
 kubectl apply -f k8s/menu-api-deployment.yaml  
+kubectl describe deployment menu-api-app
+kubectl get deployment menu-api-app
 watch 'kubectl get pods & kubectl top pods'
 ```
 
@@ -72,7 +75,7 @@ Step 2: start backend application
 Step 3: start frontend application
 
 ```Javascript/bash
-npm install
+npm start
 ```
 
 ## Check Database
@@ -108,3 +111,12 @@ show collections
 db.visitor.find()
 db.visitor.remove({ip: "73.70.114.196"})
 ```
+
+## Check if build is happening
+
+```GoogleCloud/bash
+gcloud builds list --ongoing
+```
+
+
+kubectl scale deployment menu-api-app --replicas=0
