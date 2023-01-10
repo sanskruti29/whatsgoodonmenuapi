@@ -1,7 +1,6 @@
 package com.whatsgoodonmenu.api.controllers;
 
-import javax.servlet.http.HttpServletRequest;
-
+import jakarta.servlet.http.HttpServletRequest;
 import com.whatsgoodonmenu.api.data.Visitor;
 import com.whatsgoodonmenu.api.services.visitor.VisitorService;
 

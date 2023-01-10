@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: menu-api-app
-        image: gcr.io/all-projects-292200/menu-api:0.0.13-SNAPSHOT
+        image: gcr.io/all-projects-292200/menu-api:0.0.14-SNAPSHOT
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

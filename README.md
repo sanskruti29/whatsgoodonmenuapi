@@ -45,7 +45,7 @@ After making any changes, choose version in build.gradle, update docker push com
 
 ```SpringBoot/bash
 ./gradlew bootBuildImage  
-docker push gcr.io/all-projects-292200/menu-api:0.0.13-SNAPSHOT  
+docker push gcr.io/all-projects-292200/menu-api:0.0.14-SNAPSHOT  
 kubectl apply -f k8s/menu-api-deployment.yaml  
 kubectl describe deployment menu-api-app
 kubectl get deployment menu-api-app

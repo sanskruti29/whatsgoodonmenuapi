@@ -5,7 +5,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.whatsgoodonmenu.api.data.Visitor;
 import com.whatsgoodonmenu.api.database.visitor.VisitorRepository;
