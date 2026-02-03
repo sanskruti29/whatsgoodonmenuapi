@@ -27,10 +27,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration{
 
     @Override
     protected void configureClientSettings(Builder builder) {
-        builder
-        .applyToClusterSettings(settings->{
-            settings.applyConnectionString(new ConnectionString(connectionString));
-        });
+        builder.applyConnectionString(new ConnectionString(connectionString));
     }
     
     @Override

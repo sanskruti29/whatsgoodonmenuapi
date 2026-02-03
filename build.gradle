@@ -1,12 +1,16 @@
 plugins {
-	id 'org.springframework.boot' version '3.0.1'
-	id 'io.spring.dependency-management' version '1.1.0'
+	id 'org.springframework.boot' version '3.5.9'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id 'com.google.cloud.tools.jib' version '3.4.4'
 	id 'java'
 }
 
 group = 'com.whatsgoodonmenu'
-version = '0.0.14-SNAPSHOT'
-sourceCompatibility = '19'
+version = '0.0.15-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
 
 configurations {
 	compileOnly {
@@ -23,7 +27,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.github.ua-parser:uap-java:1.4.0'
+	implementation 'com.github.ua-parser:uap-java:1.6.1'
 	implementation 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -42,6 +46,16 @@ bootRun {
     if (project.hasProperty('args')) {
         args project.args.split(',')
     }
+}
+
+jib {
+  to {
+    image = "gcr.io/all-projects-292200/menu-api:${project.version}"
+    credHelper = 'gcloud'
+  }
+  container {
+    jvmFlags = ['-XX:MaxRAMPercentage=75.0','-XX:+UseSerialGC','-Xss512k']
+  }
 }
 
 bootBuildImage {

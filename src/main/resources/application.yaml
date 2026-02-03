@@ -8,6 +8,12 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/MenuApi
 management:
-  health:
-    probes:
-      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
