@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: menu-api-app
-        image: gcr.io/all-projects-292200/menu-api:0.0.15-SNAPSHOT
+        image: gcr.io/all-projects-292200/menu-api:0.0.16-SNAPSHOT
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -26,17 +26,17 @@ spec:
             cpu: "0.02"
             memory: "150Mi"
           limits:
-            cpu: "0.6"  
-            memory: "194Mi" 
+            cpu: "0.6"
+            memory: "225Mi"
         env:
         - name: SPRING_PROFILES_ACTIVE
-          value: "prod"    
+          value: "prod"
         - name: BPL_JVM_HEAD_ROOM
-          value: "10"  
+          value: "10"
         - name: BPL_JVM_LOADED_CLASS_COUNT
-          value: "35"  
+          value: "35"
         - name: BPL_JVM_THREAD_COUNT
-          value: "10"  
+          value: "10"
         - name: JAVA_OPTS
           value: >-
                 -XX:ReservedCodeCacheSize=40M
@@ -46,6 +46,33 @@ spec:
                 -Xmx50m
                 -Xss256k
                 -XX:MaxRAM=170M
+        # From Secret
+        - name: MONGODB_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-atlas-secret
+              key: MONGODB_USER
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-atlas-secret
+              key: MONGODB_PASSWORD
+        # From ConfigMap
+        - name: MONGODB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-atlas-config
+              key: MONGODB_HOST
+        - name: MONGODB_OPTIONS
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-atlas-config
+              key: MONGODB_OPTIONS
+        - name: MONGODB_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-atlas-config
+              key: MENUAPI_DB_NAME
         livenessProbe:
           httpGet:
             port: 8080

@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.whatsgoodonmenu'
-version = '0.0.15-SNAPSHOT'
+version = '0.0.16-SNAPSHOT'
 
 java {
 	sourceCompatibility = '21'

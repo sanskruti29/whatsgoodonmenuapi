@@ -6,8 +6,10 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://mongo-0.mongo/MenuApi
+#      uri: mongodb://mongo-0.mongo/MenuApi
+      uri: mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}/${MONGODB_DB_NAME}?${MONGODB_OPTIONS}
 management:
-  health:
-    probes:
-      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
