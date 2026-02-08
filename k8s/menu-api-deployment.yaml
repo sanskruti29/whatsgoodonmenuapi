@@ -40,12 +40,13 @@ spec:
         - name: JAVA_OPTS
           value: >-
                 -XX:ReservedCodeCacheSize=40M
-                -XX:MaxMetaspaceSize=60M
+                -XX:MaxMetaspaceSize=50M
                 -Xlog:gc
                 -Xms45m
                 -Xmx50m
                 -Xss256k
                 -XX:MaxRAM=170M
+                -XX:MaxDirectMemorySize=10M
         # From Secret
         - name: MONGODB_USER
           valueFrom:

@@ -14,7 +14,12 @@ spring:
 #      uri: mongodb://mongo-0.mongo/MenuApi
       uri: mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}/${MONGODB_DB_NAME}?${MONGODB_OPTIONS}
 management:
+  endpoints:
+    web:
+      exposure:
+        include: health
   endpoint:
     health:
+      show-details: never
       probes:
         enabled: true
