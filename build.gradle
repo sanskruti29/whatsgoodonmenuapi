@@ -54,8 +54,9 @@ jib {
     credHelper = 'gcloud'
   }
   container {
-    jvmFlags = ['-XX:MaxRAMPercentage=75.0','-XX:+UseSerialGC','-Xss512k']
+    jvmFlags = ['-XX:MaxRAMPercentage=75.0','-XX:+UseSerialGC','-Xss512k','-Dspring.devtools.restart.enabled=false']
   }
+  containerizingMode = 'packaged'
 }
 
 bootBuildImage {

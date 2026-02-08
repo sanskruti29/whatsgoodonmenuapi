@@ -4,6 +4,11 @@ server:
     threads:
       max: 2
 spring:
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
   data:
     mongodb:
 #      uri: mongodb://mongo-0.mongo/MenuApi
