@@ -25,10 +25,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.github.ua-parser:uap-java:1.6.1'
-	implementation 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -54,7 +52,7 @@ jib {
     credHelper = 'gcloud'
   }
   container {
-    jvmFlags = ['-XX:MaxRAMPercentage=75.0','-XX:+UseSerialGC','-Xss512k','-Dspring.devtools.restart.enabled=false']
+    jvmFlags = ['-XX:+UseSerialGC','-Dspring.devtools.restart.enabled=false']
   }
   containerizingMode = 'packaged'
 }
