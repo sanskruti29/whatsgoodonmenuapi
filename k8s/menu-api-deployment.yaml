@@ -46,6 +46,7 @@ spec:
                 -Xmx50m
                 -Xss256k
                 -XX:MaxRAM=170M
+                -XX:TieredStopAtLevel=1
         # From Secret
         - name: MONGODB_USER
           valueFrom:
