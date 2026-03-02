@@ -40,7 +40,7 @@ spec:
         - name: JAVA_TOOL_OPTIONS
           value: >-
                 -XX:ReservedCodeCacheSize=25M
-                -XX:MaxMetaspaceSize=50M
+                -XX:MaxMetaspaceSize=65M
                 -Xlog:gc
                 -Xms45m
                 -Xmx50m
