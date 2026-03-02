@@ -1,26 +1,24 @@
 package com.whatsgoodonmenu.api.database.visitor;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-import com.mongodb.client.DistinctIterable;
+import org.bson.Document;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.log4j.Log4j2;
-@Log4j2
 @Component
 public class VisitorTemplate {
     @Autowired MongoOperations mongoOperations;
+
     public int getUniqueVisits() {
-        AtomicInteger count = new AtomicInteger(0);
-        DistinctIterable<String> distinct = mongoOperations.getCollection("visitor")
-            .distinct("ip", String.class);
-        distinct.forEach(ip -> {
-            log.info("Found unique ip: " + ip);
-            count.incrementAndGet();
-        });
-	    return count.get();
-	}
+        Aggregation agg = Aggregation.newAggregation(
+            Aggregation.group("ip"),
+            Aggregation.count().as("count")
+        );
+        AggregationResults<Document> results = mongoOperations.aggregate(agg, "visitor", Document.class);
+        Document result = results.getUniqueMappedResult();
+        return result != null ? result.getInteger("count") : 0;
+    }
 }

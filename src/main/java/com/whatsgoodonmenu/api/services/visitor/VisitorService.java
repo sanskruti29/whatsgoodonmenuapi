@@ -61,8 +61,8 @@ public class VisitorService {
         return deviceDetails;
 	}
 
-	public int getTotalVisits() {
-		return visitorRepository.findAll().size();
+	public long getTotalVisits() {
+		return visitorRepository.count();
 	}
 
 	public int getUniqueVisitors() {

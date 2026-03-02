@@ -27,7 +27,7 @@ spec:
             memory: "150Mi"
           limits:
             cpu: "0.6"
-            memory: "225Mi"
+            memory: "250Mi"
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: "prod"
@@ -37,16 +37,15 @@ spec:
           value: "35"
         - name: BPL_JVM_THREAD_COUNT
           value: "10"
-        - name: JAVA_OPTS
+        - name: JAVA_TOOL_OPTIONS
           value: >-
-                -XX:ReservedCodeCacheSize=40M
+                -XX:ReservedCodeCacheSize=25M
                 -XX:MaxMetaspaceSize=50M
                 -Xlog:gc
                 -Xms45m
                 -Xmx50m
                 -Xss256k
                 -XX:MaxRAM=170M
-                -XX:MaxDirectMemorySize=10M
         # From Secret
         - name: MONGODB_USER
           valueFrom:
@@ -80,11 +79,11 @@ spec:
             path: /actuator/health/liveness
           initialDelaySeconds: 40
           periodSeconds: 10
-          timeoutSeconds: 5
+          timeoutSeconds: 15
         readinessProbe:
           httpGet:
             port: 8080
             path: /actuator/health/readiness
           initialDelaySeconds: 60
           periodSeconds: 10
-          timeoutSeconds: 5
+          timeoutSeconds: 15
